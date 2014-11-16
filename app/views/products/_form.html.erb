@@ -1,69 +1,26 @@
-<%= form_for(@product) do |f| %>
+<%= simple_form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :package %><br>
-    <%= f.text_field :package %>
-  </div>
-  <div class="field">
-    <%= f.label :average_weigth %><br>
-    <%= f.number_field :average_weigth %>
-  </div>
-  <div class="field">
-    <%= f.label :unit %><br>
-    <%= f.text_field :unit %>
-  </div>
-  <div class="field">
-    <%= f.label :stock %><br>
-    <%= f.number_field :stock %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_blisters_per_box %><br>
-    <%= f.number_field :number_of_blisters_per_box %>
-  </div>
-  <div class="field">
-    <%= f.label :number_of_units_per_blister %><br>
-    <%= f.number_field :number_of_units_per_blister %>
-  </div>
-  <div class="field">
-    <%= f.label :max_units_to_produce %><br>
-    <%= f.number_field :max_units_to_produce %>
-  </div>
-  <div class="field">
-    <%= f.label :production_limited_by %><br>
-    <%= f.text_field :production_limited_by %>
-  </div>
-  <div class="field">
-    <%= f.label :shape %><br>
-    <%= f.text_field :shape %>
-  </div>
-  <div class="field">
-    <%= f.label :created_by %><br>
-    <%= f.number_field :created_by %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_by %><br>
-    <%= f.number_field :updated_by %>
-  </div>
+  <%= f.input :name, label: 'Nombre del Producto', required: true %>
+  <%= f.input :package, label: 'Presentación', collection: ["ISSTE","IMSS", "Privado", "Farmacias del Ahorro"], required: true%>
+  <%= f.input :shape, label: 'Forma', collection: ["Tableta","Capsula"], required: true%>
+  <%= f.input :unit, label: 'Unidad', collection: ["mg", "gr"], required: true %>
+  <%= f.input :number_of_blisters_per_box, label: 'Número de blisters por caja', required: true, as: :integer %>
+  <%= f.input :number_of_units_per_blister, label: 'Número de unidades por blister', required: true, as: :integer %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
