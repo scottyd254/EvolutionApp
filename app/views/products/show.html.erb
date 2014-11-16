@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Package:</strong>
+  <%= @product.package %>
+</p>
+
+<p>
+  <strong>Average weigth:</strong>
+  <%= @product.average_weigth %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @product.unit %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @product.stock %>
+</p>
+
+<p>
+  <strong>Number of blisters per box:</strong>
+  <%= @product.number_of_blisters_per_box %>
+</p>
+
+<p>
+  <strong>Number of units per blister:</strong>
+  <%= @product.number_of_units_per_blister %>
+</p>
+
+<p>
+  <strong>Max units to produce:</strong>
+  <%= @product.max_units_to_produce %>
+</p>
+
+<p>
+  <strong>Production limited by:</strong>
+  <%= @product.production_limited_by %>
+</p>
+
+<p>
+  <strong>Shape:</strong>
+  <%= @product.shape %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @product.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @product.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
