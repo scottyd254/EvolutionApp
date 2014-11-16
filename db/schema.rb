@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114025704) do
+ActiveRecord::Schema.define(version: 20141116031621) do
+
+  create_table "ingredients", force: true do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.integer  "stock_max"
+    t.integer  "stock_min_threshold"
+    t.integer  "stock",               default: 0
+    t.string   "external_id"
+    t.string   "material_type"
+    t.string   "active_or_excipient"
+    t.text     "description"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"

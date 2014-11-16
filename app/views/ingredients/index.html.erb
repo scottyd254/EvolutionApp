@@ -1,0 +1,153 @@
+<div class="container">
+  <h2>Listado de materiales</h2>
+
+  <a href="/ingredients/new" class="btn btn-default " role="button">Nuevo material</a>
+
+  <br><br>
+
+  <!-- Tabla para mateirales Primarios Activos -->
+
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">Materiales Primarios Activos</div>
+
+  <!-- Table -->
+    <table class="table">
+      <tr>
+        <th>Material</th>
+        <th>Clave</th>
+        <th>Stock</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @ingredients_primarios_activos.each do |material| %>
+        <tr>
+          <td><a href="/ingredients/<%= material.id %>"><%= material.name %></a></td>
+          <td><%= material.external_id %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> 90% Stock
+              </div>
+            </div> 
+          </td>
+          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+    </table>
+
+  </div>
+
+
+<!-- Tabla para mateirales Primarios Excipientes -->
+
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">Materiales Primarios Excipientes</div>
+
+  <!-- Table -->
+    <table class="table">
+      <tr>
+        <th>Material</th>
+        <th>Clave</th>
+        <th>Stock</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @ingredients_primarios_excipientes.each do |material| %>
+        <tr>
+          <td><a href="/ingredients/<%= material.id %>"><%= material.name %></a></td>
+          <td><%= material.external_id %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> 60% Stock
+              </div>
+            </div> 
+          </td>
+          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+    </table>
+
+  </div>
+
+  <!-- Tabla para Materiales Empaque Primario -->
+
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">Materiales de Empaque Primarios</div>
+
+  <!-- Table -->
+    <table class="table">
+      <tr>
+        <th>Material</th>
+        <th>Clave</th>
+        <th>Stock</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @ingredients_empaque_primario .each do |material| %>
+        <tr>
+          <td><a href="/ingredients/<%= material.id %>"><%= material.name %></a></td>
+          <td><%= material.external_id %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> 60% Stock
+              </div>
+            </div> 
+          </td>
+          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+    </table>
+
+  </div>
+
+  <!-- Tabla para Materiales de Empaque Secundarios -->
+
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">Materiales de Empaque Secundarios</div>
+
+  <!-- Table -->
+    <table class="table">
+      <tr>
+        <th>Material</th>
+        <th>Clave</th>
+        <th>Stock</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @ingredients_empaque_secundario.each do |material| %>
+        <tr>
+          <td><a href="/ingredients/<%= material.id %>"><%= material.name %></a></td>
+          <td><%= material.external_id %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"> 60% Stock
+              </div>
+            </div> 
+          </td>
+          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+
+    </table>
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+

@@ -1,0 +1,30 @@
+<%= simple_form_for(@ingredient) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: 'Material', required: true %>
+    <%= f.input :unit, label: 'Unidad', collection: [ "unidad","mg"], required: true  %>
+
+    <%= f.input :stock, label: 'Stock', required: true  %>
+
+  
+    <%= f.input :external_id, label: 'Clave', required: true  %>
+    <%= f.input :material_type, label: 'Tipo', collection: ["Materia Prima", "Material Empaque 1o", "Material Empaque 2o"], required: true  %>
+    <%= f.input :active_or_excipient, label: 'Activo o Excipient (Si aplica)', collection: ["A","X","-"], required: true  %>
+    <%= f.input :description, label: 'Descripcion' %>
+
+
+
+
+
+
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+  
