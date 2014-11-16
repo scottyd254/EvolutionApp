@@ -1,69 +1,69 @@
+<div class="container">
+  
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <h3><%= @product.name %> | <%= @product.package %> </h3>
+    <a href="/products/<%= @product.id%>/edit" class="btn btn-default">Editar</a>
+    <a href="/add_component_to_product/<%= @product.id%>" class="btn btn-default">Agregar Material</a>
 
-<p>
-  <strong>Package:</strong>
-  <%= @product.package %>
-</p>
 
-<p>
-  <strong>Average weigth:</strong>
-  <%= @product.average_weigth %>
-</p>
+    
+  </div>
+  
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">  
+        <ul class="list-group">
+          <li class="list-group-item">Forma: <%= @product.shape %></li>
+          <li class="list-group-item">Peso promedio: <%= @product.average_weigth %> <%= @product.unit %> por <%= @product.shape %></li>
+          <li class="list-group-item">Número de blisters por cajilla: <%= @product.number_of_blisters_per_box %></li>
+          <li class="list-group-item">Número de <%= @product.shape %>s por blister: <%= @product.number_of_units_per_blister %></li>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @product.unit %>
-</p>
+          <% if not(@product.number_of_blisters_per_box.nil?) && not(@product.number_of_units_per_blister.nil?) %>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
+          <li class="list-group-item">Número de <%= @product.shape %>s por cajilla: <%= @product.number_of_blisters_per_box*@product.number_of_units_per_blister %></li>
+  
+          <% end %>
+          
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-group">
+          <li class="list-group-item disabled">Maximos a producir:</li>
+          <li class="list-group-item"><%= @product.max_units_to_produce %> cajillas</li>
+          <li class="list-group-item"><%= @product.max_units_to_produce * 
+                                          @product.number_of_blisters_per_box *
+                                          @product.number_of_units_per_blister %> <%= @product.shape %>s</li>
+          <li class="list-group-item"><%= number_to_human(
+                                              @product.max_units_to_produce * 
+                                              @product.number_of_blisters_per_box *
+                                              @product.number_of_units_per_blister *
+                                              @product.average_weigth, units: {unit: "mg", thousand: "gr", million: "Kg"})%></li>
+          <li class="list-group-item">Producción limitada por: <%= @product.production_limited_by %></li>
 
-<p>
-  <strong>Number of blisters per box:</strong>
-  <%= @product.number_of_blisters_per_box %>
-</p>
+        </ul>
 
-<p>
-  <strong>Number of units per blister:</strong>
-  <%= @product.number_of_units_per_blister %>
-</p>
+              
+         
+      </div>
+      <div class="col-md-4">
+        <ul class="list-group">
+          <li class="list-group-item disabled">Parametros de produccion:</li>
+          <li class="list-group-item">Punzon: mm</li>
+          <li class="list-group-item">Golpes por blister por minuto:</li>
+          <li class="list-group-item">Blisters por golpe:</li>
+          <li class="list-group-item">Blister por hora:</li>
+          <li class="list-group-item">Horas Blister:</li>
+        </ul>
+      </div>
+    </div>
 
-<p>
-  <strong>Max units to produce:</strong>
-  <%= @product.max_units_to_produce %>
-</p>
+     
+  </div>
 
-<p>
-  <strong>Production limited by:</strong>
-  <%= @product.production_limited_by %>
-</p>
-
-<p>
-  <strong>Shape:</strong>
-  <%= @product.shape %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @product.created_by %>
-</p>
-
-<p>
-  <strong>Updated by:</strong>
-  <%= @product.updated_by %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  
