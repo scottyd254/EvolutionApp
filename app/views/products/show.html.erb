@@ -2,20 +2,25 @@
   
 <p id="notice"><%= notice %></p>
 
-
+<!-- Encabezado -->
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h3><%= @product.name %> | <%= @product.package %> </h3>
+    <h3><%= @product.name %></h3>
     <a href="/products/<%= @product.id%>/edit" class="btn btn-default">Editar</a>
     <a href="/add_component_to_product/<%= @product.id%>" class="btn btn-default">Agregar Material</a>
-
-
-    
+    <% if @product.average_weigth == 0 %>
+      <a href="/calculate_new/<%= @product.id%>" class="btn btn-default disabled">Calcular Orden de Fabricación</a>
+      <span class="badge alert-danger">Primero debes agregar materiales</span>
+    <% else %>
+      <a href="/calculate_new/<%= @product.id%>" class="btn btn-default">Calcular Orden de Fabricación</a> 
+    <% end %> 
   </div>
   
   <div class="panel-body">
     <div class="row">
+
+      <!-- Atributos del producto -->
       <div class="col-md-4">  
         <ul class="list-group">
           <li class="list-group-item">Forma: <%= @product.shape %></li>
@@ -32,6 +37,8 @@
           
         </ul>
       </div>
+
+      <!-- Maximos a producir -->
       <div class="col-md-4">
         <ul class="list-group">
           <li class="list-group-item disabled">Maximos a producir:</li>
@@ -47,10 +54,9 @@
           <li class="list-group-item">Producción limitada por: <%= @product.production_limited_by %></li>
 
         </ul>
-
-              
-         
       </div>
+
+      <!-- Parametros de Produccion
       <div class="col-md-4">
         <ul class="list-group">
           <li class="list-group-item disabled">Parametros de produccion:</li>
@@ -60,10 +66,93 @@
           <li class="list-group-item">Blister por hora:</li>
           <li class="list-group-item">Horas Blister:</li>
         </ul>
-      </div>
+      </div> -->
     </div>
 
      
   </div>
 
   
+<!-- Tabla de Componentes -->
+<div>
+  <table class="table">
+  <tr>
+    <th>Material</th>
+    <th>Clave</th>
+    <th>Cantidad</th>
+    <th>Unidad</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <!--Materia Prima -->
+  <div>
+    <tr class= "success">
+      <th>Materia Prima</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @components_materia_prima.each do |component| %>
+      <tr>
+        <td><a href="/ingredients/<%= component.ingredient_id %>"><%= component.ingredient.name %></a></td>
+        <td><%= component.ingredient.external_id %></td>
+        <td><%= component.qty %></td>
+        <td><%= component.ingredient.unit %></td>
+        <td><%= link_to 'Editar', edit_component_path(component) %></td>
+        <td><%= link_to 'Eliminar', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </div>
+
+  <!--Materiales de Empaque Primarios -->
+  <div>
+    <tr class= "danger">
+      <th>Materiales de Empaque Primarios</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @components_material_empaque_primario.each do |component| %>
+      <tr>
+        <td><a href="/ingredients/<%= component.ingredient_id %>"><%= component.ingredient.name %></a></td>
+        <td><%= component.ingredient.external_id %></td>
+        <td><%= component.qty %></td>
+        <td><%= component.ingredient.unit %></td>
+        <td><%= link_to 'Editar', edit_component_path(component) %></td>
+        <td><%= link_to 'Eliminar', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </div>
+
+  <!--Materiales de Empaque Secundarios -->
+  <div>
+    <tr class= "warning">
+      <th>Materiales de Empaque Secundarios</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+      <% @components_material_empaque_secundario.each do |component| %>
+        <tr>
+          <td><a href="/ingredients/<%= component.ingredient_id %>"><%= component.ingredient.name %></a></td>
+          <td><%= component.ingredient.external_id %></td>
+          <td><%= component.qty %></td>
+          <td><%= component.ingredient.unit %></td>
+          <td><%= link_to 'Editar', edit_component_path(component) %></td>
+          <td><%= link_to 'Eliminar', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+  </div>
+
+  </table>
+</div>

@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116031621) do
+ActiveRecord::Schema.define(version: 20141118182859) do
+
+  create_table "calculates", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "qty"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "components", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "ingredient_id"
+    t.decimal  "qty",           precision: 6, scale: 2
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ingredients", force: true do |t|
     t.string   "name"

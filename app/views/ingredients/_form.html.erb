@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, label: 'Material', required: true %>
+    <%= f.input :name, label: 'Material', required: true, autofocus: true %>
     <%= f.input :unit, label: 'Unidad', collection: [ "unidad","mg"], required: true  %>
 
     <%= f.input :stock, label: 'Stock', required: true  %>

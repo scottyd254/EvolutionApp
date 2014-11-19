@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :ingredients
 
-  resources :products
+  resources :components, :ingredients, :products, :calculates
+
+  root :to => 'products#index'
+
+  get 'add_component_to_product/:id',               to: 'components#new' 
+  get 'calculate_new/:id',                          to: 'calculates#new'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

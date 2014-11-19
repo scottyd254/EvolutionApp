@@ -39,7 +39,7 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
+        format.html { redirect_to @ingredient, notice: 'El material se creó exitosamente.' }
         format.json { render :show, status: :created, location: @ingredient }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
+        format.html { redirect_to @ingredient, notice: 'El material se editó exitosamente.' }
         format.json { render :show, status: :ok, location: @ingredient }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient.destroy
     respond_to do |format|
-      format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
+      format.html { redirect_to ingredients_url, notice: 'El material fue elimiado.' }
       format.json { head :no_content }
     end
   end

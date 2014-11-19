@@ -11,8 +11,11 @@
     </div>
   <% end %>
 
-  <%= f.input :name, label: 'Nombre del Producto', required: true %>
+  <%= f.input :name, label: 'Nombre del Producto', required: true, autofocus: true %>
+  <!--
   <%= f.input :package, label: 'Presentación', collection: ["ISSTE","IMSS", "Privado", "Farmacias del Ahorro"], required: true%>
+-->
+
   <%= f.input :shape, label: 'Forma', collection: ["Tableta","Capsula"], required: true%>
   <%= f.input :unit, label: 'Unidad', collection: ["mg", "gr"], required: true %>
   <%= f.input :number_of_blisters_per_box, label: 'Número de blisters por caja', required: true, as: :integer %>
