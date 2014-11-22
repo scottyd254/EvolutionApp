@@ -27,6 +27,8 @@ class ComponentsController < ApplicationController
   # POST /components.json
   def create
     @component = Component.new(component_params)
+    @component.created_by     = current_user.id
+    @component.updated_by     = current_user.id
 
 
     respond_to do |format|
@@ -48,9 +50,9 @@ class ComponentsController < ApplicationController
   # PATCH/PUT /components/1
   # PATCH/PUT /components/1.json
   def update
-    @component = Component.find(params[:id])
-
-    @product = Product.find(@component.product_id)
+    @component                = Component.find(params[:id])
+    @component.updated_by     = current_user.id
+    @product                  = Product.find(@component.product_id)
 
     respond_to do |format|
       if @component.update(component_params)

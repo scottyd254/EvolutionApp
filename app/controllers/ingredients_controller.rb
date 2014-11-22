@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:destroy]
 
   # GET /ingredients
   # GET /ingredients.json
@@ -36,6 +37,8 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.created_by     = current_user.id
+    @ingredient.updated_by     = current_user.id
 
     respond_to do |format|
       if @ingredient.save
@@ -51,6 +54,8 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1
   # PATCH/PUT /ingredients/1.json
   def update
+    @ingredient.updated_by     = current_user.id
+    
     respond_to do |format|
       if @ingredient.update(ingredient_params)
         format.html { redirect_to @ingredient, notice: 'El material se editó exitosamente.' }

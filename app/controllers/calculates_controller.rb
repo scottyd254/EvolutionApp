@@ -26,17 +26,21 @@ class CalculatesController < ApplicationController
     @calculate                = Calculate.new
     @calculate.product_id     = params[:id]
     
+    
 
   end
 
   # GET /calculates/1/edit
   def edit
+    
   end
 
   # POST /calculates
   # POST /calculates.json
   def create
     @calculate  = Calculate.new(calculate_params)
+    @calculate.created_by     = current_user.id
+    @calculate.updated_by     = current_user.id
 
     respond_to do |format|
       if @calculate.save
@@ -52,6 +56,8 @@ class CalculatesController < ApplicationController
   # PATCH/PUT /calculates/1
   # PATCH/PUT /calculates/1.json
   def update
+    @calculate.updated_by     = current_user.id
+    
     respond_to do |format|
       if @calculate.update(calculate_params)
         format.html { redirect_to @calculate, notice: 'Calculo editado exitosamente.' }

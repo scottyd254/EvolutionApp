@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Listado de productos</h2>
-
+ 
   <a href="/products/new" class="btn btn-default" role="button">Nuevo producto</a>
 
   <br><br>
@@ -27,7 +27,10 @@
             -->
             </div> 
           </td>
-          <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.role == 'admin' %>
+            <td><%= link_to 'Eliminar', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          
         </tr>
       <% end %>
     </table>

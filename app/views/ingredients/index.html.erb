@@ -31,7 +31,11 @@
               </div>
             </div> 
           </td>
-          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <!-- Mostrar boton de eliminar solo para admins -->
+          <% if current_user.role == 'admin' %>
+            <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
         </tr>
       <% end %>
 
@@ -66,7 +70,12 @@
               </div>
             </div> 
           </td>
-          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          
+          <!-- Mostrar boton de eliminar solo para admins -->
+          <% if current_user.role == 'admin' %>
+            <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
         </tr>
       <% end %>
 
@@ -100,7 +109,12 @@
               </div>
             </div> 
           </td>
-          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <!-- Mostrar boton de eliminar solo para admins -->
+          <% if current_user.role == 'admin' %>
+            <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
         </tr>
       <% end %>
 
@@ -134,7 +148,12 @@
               </div>
             </div> 
           </td>
-          <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <!-- Mostrar boton de eliminar solo para admins -->
+          <% if current_user.role == 'admin' %>
+            <td><%= link_to 'Eliminar', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
         </tr>
       <% end %>
 

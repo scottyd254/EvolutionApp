@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:destroy]
 
   # GET /products
   # GET /products.json
@@ -66,6 +67,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.created_by     = current_user.id
+    @product.updated_by     = current_user.id
 
     respond_to do |format|
       if @product.save
@@ -81,6 +84,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product.updated_by     = current_user.id
+    
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'El producto se editó exitosamente.' }

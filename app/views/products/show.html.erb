@@ -4,7 +4,7 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h3><%= @product.name %></h3>
+    <h3><%= @product.name %> creado por <%= @product.user.email %></h3>
     <a href="/products/<%= @product.id%>/edit" class="btn btn-default">Editar</a>
     <a href="/add_component_to_product/<%= @product.id%>" class="btn btn-default">Agregar Material</a>
     <% if @product.average_weigth == 0 %>
