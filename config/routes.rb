@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :components, :ingredients, :products, :calculates
 
   root :to => 'products#index'

@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.7'
 gem 'simple_form'
 
+gem 'devise'
+
 gem 'rails_12factor', group: :production
 gem 'pg'
 # Use sqlite3 as the database for Active Record
