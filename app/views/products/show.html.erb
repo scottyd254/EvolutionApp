@@ -4,7 +4,7 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <h3><%= @product.name %> creado por <%= @product.user.email %></h3>
+    <h3><%= @product.name %></h3>
     <a href="/products/<%= @product.id%>/edit" class="btn btn-default">Editar</a>
     <a href="/add_component_to_product/<%= @product.id%>" class="btn btn-default">Agregar Material</a>
     <% if @product.average_weigth == 0 %>
@@ -70,7 +70,14 @@
      
   </div>
 
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Ojo!</strong> Para preparar 1 <%= @product.shape %> de <%= @product.name %> se necesitan los siguientes materiales. <br><br>
+  <p>Para el caso de los materiales de empaque secundarios como por ejemplo una cajilla, deberás dividir 1 entre la cantidad de <%= @product.shape %>s por cajillas. Por ejemplo: si la cajilla lleva 30 unidades deberás ingresar 1/30 => "0.03"</p>
   
+</div>
+
+
 <!-- Tabla de Componentes -->
 <div>
   <table class="table">
@@ -108,7 +115,7 @@
 
   <!--Materiales de Empaque Primarios -->
   <div>
-    <tr class= "danger">
+    <tr class= "info">
       <th>Materiales de Empaque Primarios</th>
       <th></th>
       <th></th>
@@ -144,7 +151,16 @@
         <tr>
           <td><a href="/ingredients/<%= component.ingredient_id %>"><%= component.ingredient.name %></a></td>
           <td><%= component.ingredient.external_id %></td>
-          <td><%= component.qty %></td>
+          <td> <% if component.qty < 1 %>
+            <%= component.qty.to_r %>
+          <% else %>  
+            <%= component.qty %>
+          <% end %>
+            
+
+
+
+          </td>
           <td><%= component.ingredient.unit %></td>
           <td><%= link_to 'Editar', edit_component_path(component) %></td>
           <td><%= link_to 'Eliminar', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>

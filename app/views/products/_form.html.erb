@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <%= f.input :name, label: 'Nombre del Producto', required: true, autofocus: true %>
+  <%= f.input :name, label: 'Nombre del Producto', autofocus: true %>
   <!--
-  <%= f.input :package, label: 'Presentación', collection: ["ISSTE","IMSS", "Privado", "Farmacias del Ahorro"], required: true%>
+  <%= f.input :package, label: 'Presentación', collection: ["ISSTE","IMSS", "Privado", "Farmacias del Ahorro"] %>
 -->
 
-  <%= f.input :shape, label: 'Forma', collection: ["Tableta","Capsula"], required: true%>
-  <%= f.input :unit, label: 'Unidad', collection: ["mg", "gr"], required: true %>
-  <%= f.input :number_of_blisters_per_box, label: 'Número de blisters por caja', required: true, as: :integer %>
-  <%= f.input :number_of_units_per_blister, label: 'Número de unidades por blister', required: true, as: :integer %>
+  <%= f.input :shape, label: 'Forma', collection: ["Tableta","Capsula"] %>
+  <%= f.input :unit, label: 'Unidad', collection: ["mg", "gr"] %>
+  <%= f.input :number_of_blisters_per_box, label: 'Número de blisters por caja', as: :integer %>
+  <%= f.input :number_of_units_per_blister, label: 'Número de unidades por blister', as: :integer %>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Guardar' %>
   </div>
 <% end %>
 
