@@ -1,0 +1,32 @@
+a {
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+}
+
+nav a {
+    color: black;
+    font-weight: 400;
+}
+
+#comment-input::placeholder {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+}
+
+
+#post-info-container span {
+    font-family: 'Lato', sans-serif;
+    font-style:normal; 
+    font-weight:200;
+}
+

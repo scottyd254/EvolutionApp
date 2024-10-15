@@ -1,0 +1,22 @@
+# ignore any.env files 
+
+
+# ignore any .md files 
+
+
+# ignore any .ipynb or .sqlite3 
+
+
+# ignore any .dockerignore or Dockerfile
+
+
+
+# ignore the directory theme_files/css/scss/ and any files inside
+
+
+# ignore any __pycache__ & migrations directory 
+
+
+
+
+
