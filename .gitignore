@@ -1,21 +1,27 @@
 # ignore any.env files 
-
+*.env
 
 # ignore any .md files 
+*.md
 
+# does not ignore README.md
+!README.md
 
-# ignore any .ipynb or .sqlite3 
-
+# ignore any .ipynb
+*.ipynb
 
 # ignore any .dockerignore or Dockerfile
 
-
+# ignore any .toml files 
+*.toml
 
 # ignore the directory theme_files/css/scss/ and any files inside
-
+/theme_files/scss/
 
 # ignore any __pycache__ & migrations directory 
+/__pycache__/
 
+/migrations/
 
 
 
